@@ -6,7 +6,6 @@ class Jouer {
     private bool $titulaire;
     private int $note;
 
-    // Getters
     public function getIdJoueur(): int {
         return $this->idJouer;
     }
@@ -18,9 +17,11 @@ class Jouer {
     public function getPoste(): String {
         return $this->poste;
     }
+
     public function getTitulaire(): bool {
         return $this->titulaire;
     }
+
     public function getNote(): int {
         return $this->note;
     }

@@ -1,8 +1,7 @@
 <?php
 
 class Joueur {
-
-    // Déclaration attributs
+    
     private int $idJoueur;
     private String $licence;
     private String $nom;
@@ -13,7 +12,6 @@ class Joueur {
     private float $taille;
     private array $commentaires;
 
-    // Getters
     public function getIdJoueur( ): int {
         return $this->idJoueur;
     }
@@ -41,6 +39,7 @@ class Joueur {
     public function getPoids(): float {
         return $this->poids;
     }
+
     public function getTaille(): float {
         return $this->taille;
     }
