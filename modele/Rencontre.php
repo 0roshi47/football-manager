@@ -7,39 +7,39 @@ class Rencontre {
     private String $lieu;
     private bool $resultat;
 
-    function getIdMatch() {
+    public function getIdMatch() {
         return $this->idMatch;
     }
 
-    function setDateHeure(DateTime $nouvelleDate) {
+    public function setDateHeure(DateTime $nouvelleDate) {
         $this->dateHeure = $nouvelleDate;
     }
 
-    function getDateHeure(): DateTime {
+    public function getDateHeure(): DateTime {
         return $this->dateHeure;
     }
 
-    function setAdversaire(String $adversaire) {
+    public function setAdversaire(String $adversaire) {
         $this->adversaire = $adversaire;
     }
 
-    function getAdversaire(): String {
+    public function getAdversaire(): String {
         return $this->adversaire;
     }
 
-    function setLieu(String $lieu) {
+    public function setLieu(String $lieu) {
         $this->lieu = $lieu;
     }
 
-    function getLieu(): String {
+    public function getLieu(): String {
         return $this->lieu;
     }
 
-    function setResultat(bool $resultat) {
+    public function setResultat(bool $resultat) {
         $this->resultat = $resultat;
     }
 
-    function getResultat(): bool {
+    public function getResultat(): bool {
         return $this->resultat;
     }
 

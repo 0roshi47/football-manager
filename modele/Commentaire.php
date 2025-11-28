@@ -7,10 +7,10 @@ class Commentaire {
     private String $texte;
 
     // Getters
-    function getIdCommentaire(): int {
+    public function getIdCommentaire(): int {
         return $this->idCommentaire;
     }
-    function getTexte(): String {
+    public function getTexte(): String {
         return $this->texte;
     }
 }

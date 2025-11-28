@@ -1,26 +1,28 @@
 <?php
-
 class Jouer {
-
-    // Déclaration attributs
     private int $idJouer;
+    private int $idRencontre;
     private String $poste;
     private bool $titulaire;
     private int $note;
 
     // Getters
-    function getIdJoueur(): int {
+    public function getIdJoueur(): int {
         return $this->idJouer;
     }
-    function getPoste(): String {
+
+    public function getIdRencontre(): int {
+        return $this->idRencontre;
+    }
+
+    public function getPoste(): String {
         return $this->poste;
     }
-    function getTitulaire(): bool {
+    public function getTitulaire(): bool {
         return $this->titulaire;
     }
-    function getNote(): int {
+    public function getNote(): int {
         return $this->note;
     }
-    
 } 
-    ?>
+?>
