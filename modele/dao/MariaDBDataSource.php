@@ -7,10 +7,10 @@ class MariaDBDataSource {
     private static String $url = "mysql-liam-valty.alwaysdata.net";
     private static String $db = "liam-valty_football";
 
-    protected ?PDO $connection;
+    protected PDO $connection = null;
 
     public static function getConnexion(): PDO {
-        if (MariaDBDataSource::$connection == null) {
+        if (!isset(MariaDBDataSource::$connection)) {
             $url = MariaDBDataSource::$url;
             $db = MariaDBDataSource::$db;
             try {
@@ -25,6 +25,5 @@ class MariaDBDataSource {
     public static function deconnexion(): void {
         MariaDBDataSource::$connection = null;
     }
-
 }
 ?>

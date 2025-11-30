@@ -5,6 +5,11 @@ class Compositon {
     private array $joueurs;
     private array $rencontres;
 
+    public function __construct(array $joueurs, array $rencontres) {
+        $this->joueurs = $joueurs;
+        $this->rencontres = $rencontres;
+    }
+
     public function getJoueurs(): array {
         return $this->joueurs;
     }
@@ -36,6 +41,5 @@ class Compositon {
             }
         }
     }
-
 }
 ?>

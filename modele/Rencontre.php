@@ -1,14 +1,22 @@
 <?php
 class Rencontre {
 
-    private int $idMatch;
+    private int $idRencontre;
     private DateTime $dateHeure;
     private String $adversaire;
     private String $lieu;
     private bool $resultat;
 
-    public function getIdMatch() {
-        return $this->idMatch;
+    public function __construct(int $idRencontre, DateTime $dateHeure, String $adversaire, String $lieu, bool $resultat) {
+        $this->idRencontre = $idRencontre;
+        $this->dateHeure = $dateHeure;
+        $this->adversaire = $adversaire;
+        $this->lieu = $lieu;
+        $this->resultat = $resultat;
+    }
+
+    public function getIdRencontre() {
+        return $this->idRencontre;
     }
 
     public function setDateHeure(DateTime $nouvelleDate) {
