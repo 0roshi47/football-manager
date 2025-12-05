@@ -1,0 +1,59 @@
+th,
+td {
+  border: 1px solid rgb(160 160 160);
+  padding: 8px 10px;
+}
+
+div {
+    margin : 10px;
+}
+
+.select-default {
+    border-radius: 5px;
+}
+
+.button-default {
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.button-default:hover {
+    background-color: rgb(133, 198, 255);
+    transition: all;
+    transform: scale(1.1);
+    transition-duration: 0.2s;
+}
+
+.tableau {
+  border-collapse: collapse;
+  border: 2px solid rgb(140 140 140);
+  font-family: sans-serif;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+  
+}
+
+.carte-joueur {
+    padding: 20px;
+    border: 2px solid rgb(128, 128, 128);
+    display: flex;
+    flex-direction: column;
+    border-radius: 10px;
+    background-color: rgb(230, 229, 229);
+}
+
+.container-cartes {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.infos-joueur {
+    list-style-type: none;
+    padding-left: 0px;
+}
+
+.select-statut {
+    border-radius: 5px;
+    width: 100px;
+}
