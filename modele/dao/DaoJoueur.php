@@ -16,7 +16,7 @@ class DaoJoueur implements Dao {
     public function findById(int $id): Joueur {
         $linkpdo = MariaDBDataSource::getConnexion();
         $req = $linkpdo->prepare('select * from joueur where id_joueur = ?');
-        $req->bindParam('?', $id, PDO::PARAM_STR);
+        $req->bindParam(1, $id, PDO::PARAM_INT);
         $res = $req->fetchAll(PDO::FETCH_ASSOC);
         return $this->createInstance($res);
     }
@@ -24,8 +24,8 @@ class DaoJoueur implements Dao {
     public function findAll(): array {
         $resArray = array();
         $linkpdo = MariaDBDataSource::getConnexion();
-        $req = $linkpdo->prepare('select * from joueur where id_joueur = :?');
-        $req->bindParam(':?', $id, PDO::PARAM_STR);
+        $req = $linkpdo->prepare('select * from joueur where id_joueur = ?');
+        $req->bindParam(1, $id, PDO::PARAM_INT);
         $resQuery = $req->fetchAll(PDO::FETCH_ASSOC);
         foreach ($resQuery as $joueur) {
             $resArray.array_push($this->createInstance($joueur));
