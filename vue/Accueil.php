@@ -10,14 +10,16 @@
 
     <?php
     require_once '../modele/dao/MariaDBDataSource.php';
-    $link = MariaDBDataSource::getConnexion();
+    require_once '../modele/dao/DaoJoueur.php';
+    // $daoJoueur = new DaoJoueur();
+    // $joueur = new DaoJoueur().findById(1);
     // $pdo = new PDO("mysql:host=mysql-liam-valty.alwaysdata.net;port=3306;dbname=liam-valty_football", "442033_football", "A^KM+yN?,~6c+bC");
 
-    try {
-        $linkpdo = new PDO("mysql:host=mysql-liam-valty.alwaysdata.net;port=3306;dbname=liam-valty_football", "442033_football", "A^KM+yN?,~6c+bC");
-    } catch(PDOException $e) {
-        echo "pdo exception";
-    }
+    // try {
+    //     $linkpdo = new PDO("mysql:host=mysql-liam-valty.alwaysdata.net;port=3306;dbname=liam-valty_football", "442033_football", "A^KM+yN?,~6c+bC");
+    // } catch(PDOException $e) {
+    //     echo "pdo exception";
+    // }
     // $joueur = $DaoJoueur()->findById(2);
     ?>
 
