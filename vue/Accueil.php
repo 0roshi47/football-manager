@@ -11,7 +11,7 @@
         <ul>
             <li><a href="Accueil.php">Accueil</a></li>
             <li><a href="GestionRencontre.html">Rencontre</a></li>
-            <li><a href="GestionJoueur.html">Joueurs</a></li>
+            <li><a href="GestionJoueur.php">Joueurs</a></li>
             <li><a href="GestionComposition.html">Composition</a></li>
         </ul>
     </nav>
@@ -30,7 +30,7 @@
     </div>
     <div>
         <a href="GestionRencontre.html"><button class="button-default">Gérer les matchs</button></a>
-        <a href="GestionJoueur.html"><button class="button-default">Gérer les joueurs</button></a>
+        <a href="GestionJoueur.php"><button class="button-default">Gérer les joueurs</button></a>
         <a href="GestionComposition.html"><button class="button-default">Gérer les compositions</button></a>
     </div>
 
