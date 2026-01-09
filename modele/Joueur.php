@@ -12,6 +12,17 @@ class Joueur {
     private float $taille;
     private array $commentaires;
 
+    public function __construct(int $id, String $license, String $nom, String $prenom, Datetime $naissance, String $statut, int $poids, int $taille) {
+        $this->idJoueur = $id;
+        $this->licence = $license;
+        $this->nom = $nom;
+        $this->prenom = $prenom;
+        $this->naissance = $naissance;
+        $this->statut = $statut;
+        $this->poids = $poids;
+        $this->taille = $taille;
+    }
+
     public function getIdJoueur( ): int {
         return $this->idJoueur;
     }

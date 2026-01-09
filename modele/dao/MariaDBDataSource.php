@@ -1,25 +1,22 @@
 <?php
-
 class MariaDBDataSource {
-
+    
+    private static String $host = "mysql-liam-valty.alwaysdata.net";
+    private static String $port = "3306";
+    private static String $db = "liam-valty_football";
     private static String $user = "442033_football";
     private static String $password = "A^KM+yN?,~6c+bC";
-    private static String $url = "mysql-liam-valty.alwaysdata.net";
-    private static String $db = "liam-valty_football";
-
-    protected PDO $connection = null;
+    private static ?PDO $connection = null;
 
     public static function getConnexion(): PDO {
-        if (!isset(MariaDBDataSource::$connection)) {
-            $url = MariaDBDataSource::$url;
-            $db = MariaDBDataSource::$db;
+        if (!isset(self::$connection)) {
             try {
-                MariaDBDataSource::$connection = new PDO("mysql:host=MariaDBDataSource::$url;dbname=MariaDBDataSource::$db", MariaDBDataSource::$user, MariaDBDataSource::$password);
+                self::$connection = new PDO("mysql:host=mysql-liam-valty.alwaysdata.net;port=3306;dbname=liam-valty_football", "442033_football", "A^KM+yN?,~6c+bC");
             } catch (PDOException $e) {
                 die('Erreur : ' . $e->getMessage());
             }
         }
-        return MariaDBDataSource::$connection;
+        return self::$connection;
     }
 
     public static function deconnexion(): void {
