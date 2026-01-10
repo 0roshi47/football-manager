@@ -19,7 +19,12 @@ interface Dao {
      * @return T[]
      */
     public function findAll(): array;
-    public function update(): void;
+
+     /**
+     * @param mixed $entity
+     * @return void
+     */
+    public function update(mixed $entity): void;
     public function deleteById(int $id): void;
 }
 ?>

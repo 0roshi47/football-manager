@@ -6,13 +6,13 @@ class Joueur {
     private String $licence;
     private String $nom;
     private String $prenom;
-    private Datetime $naissance;
+    private DateTimeImmutable $naissance;
     private String $statut;
     private float $poids;
     private float $taille;
     private array $commentaires;
 
-    public function __construct(int $id, String $license, String $nom, String $prenom, Datetime $naissance, String $statut, int $poids, int $taille) {
+    public function __construct(int $id, String $license, String $nom, String $prenom, DateTimeImmutable $naissance, String $statut, int $poids, int $taille) {
         $this->idJoueur = $id;
         $this->licence = $license;
         $this->nom = $nom;
@@ -39,7 +39,7 @@ class Joueur {
         return $this->prenom;
     }
 
-    public function getNaissance(): Datetime {
+    public function getNaissance(): DateTimeImmutable {
         return $this->naissance;
     }
 
