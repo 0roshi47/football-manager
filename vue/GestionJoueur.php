@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8">
     <title>Gestion des Joueurs</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../vue/style.css">
 </head>
 
 <body>
@@ -24,21 +24,16 @@
         </select> <a href="AjouterJoueur.html"><button class="button-default">Ajouter un joueur</button></a> </div>
     <div class="container-cartes"></div>
     <?php
+    include "../modele/dao/DaoJoueur.php";
     // Affichage des erreurs (à garder en dev)
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
     // Connexion PDO
-    $linkpdo = new PDO(
-        dsn: "mysql:host=mysql-liam-valty.alwaysdata.net;dbname=liam-valty_football;charset=utf8",
-        username: "442033_football",
-        password: "A^KM+yN?,~6c+bC",
-        options: [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
-    );
+    $dao = new DaoJoueur();
 
     // Requête pour récupérer les joueurs
-    $req = $linkpdo->prepare(query: "SELECT * FROM Joueur");
-    $req->execute();
+    $req = $dao->findAll();
     ?>
 
     <div class="container-cartes">
@@ -48,16 +43,16 @@
 
                 <ul class="infos-joueur">
                     <li>Nom :
-                        <?= htmlspecialchars($row['nom']) ?>
+                        <?= htmlspecialchars($row->getNom()) ?>
                     </li>
                     <li>Prénom :
-                        <?= htmlspecialchars($row['prenom']) ?>
+                        <?= htmlspecialchars($row->getPrenom()) ?>
                     </li>
                     <li>Naissance :
-                        <?= htmlspecialchars($row['naissance']) ?>
+                        <?= $row->getNaissance()->format("d/m/Y") ?>
                     </li>
                     <li>Licence :
-                        <?= htmlspecialchars($row['license']) ?>
+                        <?= htmlspecialchars($row->getLicence()) ?>
                     </li>
                 </ul>
 

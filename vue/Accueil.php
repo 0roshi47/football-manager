@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-<meta charset="utf-8">
-  <title>Accueil </title>
-  <link rel="stylesheet" href="style.css">
 
+<head>
+    <meta charset="utf-8">
+    <title>Accueil </title>
+    <link rel="stylesheet" href="../vue/style.css">
 </head>
+
 <body>
     <nav  class="navbar">
         <ul>

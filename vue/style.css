@@ -58,7 +58,46 @@ div {
     width: 100px;
 }
 
+/* ===== NAVBAR ===== */
 .navbar {
+    background-color: #030360;
+    padding: 0 30px;
+    height: 60px;
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.navbar ul {
+    list-style: none;
+    display: flex;
+    gap: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+.navbar li {
+    display: inline-block;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: 500;
+    font-size: 16px;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Hover */
+.navbar a:hover {
+    background-color: #ffffff;
+    color: #1e1e1e;
+}
+
+/* Lien actif (optionnel) */
+.navbar a.active {
+    background-color: #4caf50;
+    color: #ffffff;
 }
