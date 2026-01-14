@@ -7,21 +7,18 @@ class DaoRencontre implements Dao
 {
     /**
      * @param array<string,mixed> $res
-     * @return Joueur
+     * @return Rencontre
      */
     public function createInstance(array $res): Rencontre {
-        $id = $res['id_joueur'] ?? $res['idRencontre'] ?? null;
-        $license = $res['license'] ?? null;
-        $nom = $res['nom'] ?? '';
-        $prenom = $res['prenom'] ?? '';
-        $naissance = $res['naissance'] ?? null;
-        $statut = $res['statut'] ?? null;
-        $poids = $res['poids'] ?? null;
-        $taille = $res['taille'] ?? null;
+        $id = $res['idRencontre'];
+        $dateHeure = $res['dateHeure'];
+        $adversaire = $res['adversaire'];
+        $lieu = $res['lieu'];
+        $resultat = $res['resultat'];
 
-        $dateNaissance = new DateTimeImmutable($naissance . "00:00:00");
+        $date = new DateTimeImmutable($dateHeure . "00:00:00");
 
-        return new Joueur($id, $license, $nom, $prenom, $dateNaissance, $statut, $poids, $taille);
+        return new Rencontre($id, $dateHeure, $adversaire, $lieu, $resultat);
     }
 
     /**

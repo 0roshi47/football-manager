@@ -10,14 +10,14 @@ class DaoJoueur implements Dao
      * @return Joueur
      */
     public function createInstance(array $res): Joueur {
-        $id = $res['id_joueur'] ?? $res['idJoueur'] ?? null;
-        $license = $res['license'] ?? null;
-        $nom = $res['nom'] ?? '';
-        $prenom = $res['prenom'] ?? '';
-        $naissance = $res['naissance'] ?? null;
-        $statut = $res['statut'] ?? null;
-        $poids = $res['poids'] ?? null;
-        $taille = $res['taille'] ?? null;
+        $id = $res['idJoueur'];
+        $license = $res['license'];
+        $nom = $res['nom'];
+        $prenom = $res['prenom'];
+        $naissance = $res['naissance'];
+        $statut = $res['statut'];
+        $poids = $res['poids'];
+        $taille = $res['taille'];
 
         $dateNaissance = new DateTimeImmutable($naissance . "00:00:00");
 
