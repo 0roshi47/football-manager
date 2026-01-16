@@ -8,13 +8,22 @@
     </head>
     <body>
         <nav  class="navbar">
-        <ul>
-            <li><a href="Accueil.php">Accueil</a></li>
-            <li><a href="GestionRencontre.html">Rencontre</a></li>
-            <li><a href="GestionJoueur.php">Joueurs</a></li>
-            <li><a href="GestionComposition.html">Composition</a></li>
-        </ul>
-    </nav>
+            <ul>
+                <li><a href="Accueil.php">Accueil</a></li>
+                <li><a href="GestionRencontre.html">Rencontre</a></li>
+                <li><a href="GestionJoueur.php">Joueurs</a></li>
+                <li><a href="GestionComposition.html">Composition</a></li>
+            </ul>
+        </nav>
+        <div> <select class="select-default" name="Tris">
+            <option value="">Tri</option>
+            <option value="dateAsc">Date croissant</option>
+            <option value="dateDesc">Date décroissante</option>
+            <option value="lieu">Lieu</option>
+            </select> 
+            <a href="AjouterRencontre.html"><button class="button-default">Ajouter une rencontre</button></a>
+         </div>
         Gestion des rencontres
     </body>
+    
 </html>

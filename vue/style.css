@@ -65,7 +65,7 @@ div {
     height: 60px;
     display: flex;
     align-items: center;
-    border-radius: 5px;
+    border-radius: 10px;
 }
 
 .navbar ul {

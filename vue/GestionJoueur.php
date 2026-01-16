@@ -12,16 +12,19 @@
         <ul>
             <li><a href="Accueil.php">Accueil</a></li>
             <li><a href="GestionRencontre.html">Rencontre</a></li>
-            <li><a href="GestionJoueur.html">Joueurs</a></li>
+            <li><a href="GestionJoueur.php">Joueurs</a></li>
             <li><a href="GestionComposition.html">Composition</a></li>
         </ul>
     </nav>
-    <div> <select class="select-default" name="Tris">
+    <div> 
+        <select class="select-default" name="Tris">
             <option value="">Tri</option>
             <option value="Alpha">Ordre alphabétique</option>
             <option value="noteAsc">Note croissante</option>
             <option value="notDesc"> Note décroissante</option>
-        </select> <a href="AjouterJoueur.html"><button class="button-default">Ajouter un joueur</button></a> </div>
+        </select> 
+        <a href="AjouterJoueur.html"><button class="button-default">Ajouter un joueur</button></a>
+     </div>
     <div class="container-cartes"></div>
     <?php
     include "../modele/dao/DaoJoueur.php";

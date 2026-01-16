@@ -18,6 +18,7 @@
     </nav>
     <h1>Bonjour $user</h1>
     <div >
+        <h3>Matchs à venir</h3>
         <table class="tableau">
             <thead>
                 <tr>
