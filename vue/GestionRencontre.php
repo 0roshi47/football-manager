@@ -7,14 +7,7 @@
         
     </head>
     <body>
-        <nav  class="navbar">
-            <ul>
-                <li><a href="../index.php">Accueil</a></li>
-                <li><a href="GestionRencontre.html">Rencontre</a></li>
-                <li><a href="GestionJoueur.php">Joueurs</a></li>
-                <li><a href="GestionComposition.html">Composition</a></li>
-            </ul>
-        </nav>
+        <?php include 'navbar.php'; ?>
         <div> <select class="select-default" name="Tris">
             <option value="">Tri</option>
             <option value="dateAsc">Date croissant</option>

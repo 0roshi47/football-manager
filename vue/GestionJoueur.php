@@ -4,18 +4,11 @@
 <head>
     <meta charset="utf-8">
     <title>Gestion des Joueurs</title>
-    <link rel="stylesheet" href="../vue/style.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <nav class="navbar">
-        <ul>
-            <li><a href="../index.php">Accueil</a></li>
-            <li><a href="GestionRencontre.html">Rencontre</a></li>
-            <li><a href="GestionJoueur.php">Joueurs</a></li>
-            <li><a href="GestionComposition.html">Composition</a></li>
-        </ul>
-    </nav>
+    <?php include 'navbar.php'; ?>
     <div> 
         <select class="select-default" name="Tris">
             <option value="">Tri</option>
@@ -32,10 +25,9 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    // Connexion PDO
     $dao = new DaoJoueur();
 
-    // Requête pour récupérer les joueurs
+    // Récupération de tout les joueurs
     $req = $dao->findAll();
     ?>
 

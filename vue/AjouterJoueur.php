@@ -3,17 +3,10 @@
   <head>
     <meta charset="utf-8" />
     <title>Ajouter un joueur</title>
-    <link rel="stylesheet" href="../vue/style.css" />
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <nav class="navbar">
-      <ul>
-        <li><a href="../index.php">Accueil</a></li>
-        <li><a href="GestionRencontre.html">Rencontre</a></li>
-        <li><a href="GestionJoueur.php">Joueurs</a></li>
-        <li><a href="GestionComposition.html">Composition</a></li>
-      </ul>
-    </nav>
+    <?php include 'navbar.php'; ?>
     <h1>Ajouter un joueur</h1>
     <form action="ajout_joueur.php" method="post">
       <table>
