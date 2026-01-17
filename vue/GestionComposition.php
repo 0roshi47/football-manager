@@ -6,6 +6,12 @@
         <title>Gestion des Compositions</title>
     </head>
     <body>
+        <?php
+        if (!session_status() == PHP_SESSION_ACTIVE) {
+            header('Location: ../index.php');
+            exit;
+        }
+        ?>
         <?php include 'navbar.php'; ?>
         Gestion des composiition
     </body>

@@ -6,6 +6,12 @@
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
+    <?php
+        if (!session_status() == PHP_SESSION_ACTIVE) {
+            header('Location: ../index.php');
+            exit;
+        }
+    ?>
     <?php include 'navbar.php'; ?>
     <h1>Ajouter un joueur</h1>
     <form action="ajout_joueur.php" method="post">

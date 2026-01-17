@@ -7,6 +7,12 @@
         
     </head>
     <body>
+        <?php
+        if (!session_status() == PHP_SESSION_ACTIVE) {
+            header('Location: ../index.php');
+            exit;
+        }
+        ?>
         <?php include 'navbar.php'; ?>
         <div> <select class="select-default" name="Tris">
             <option value="">Tri</option>
