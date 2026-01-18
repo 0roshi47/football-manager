@@ -1,9 +1,9 @@
 <?php
 require_once 'Dao.php';
 require_once 'MariaDBDataSource.php';
-require_once '../modele/Jouer.php';
-require_once '../modele/Joueur.php';
-require_once '../modele/dao/DaoJoueur.php'; // si votre DaoJoueur du modèle joueur est ici
+require_once __DIR__ . '../../Jouer.php';
+require_once __DIR__ . '../../Joueur.php';
+require_once __DIR__ . '/DaoJoueur.php';
 
 class DaoJouer implements Dao {
 
@@ -33,9 +33,9 @@ class DaoJouer implements Dao {
         }
 
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'INSERT INTO Jouer (idRencontre, idJoueur, poste, titulaire, note) VALUES (:idRencontre, :idJoueur, :poste, :titulaire, :note)';
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
+        $requete = 'INSERT INTO Jouer (idRencontre, idJoueur, poste, titulaire, note) VALUES (:idRencontre, :idJoueur, :poste, :titulaire, :note)';
+        $statement = $pdo->prepare($requete);
+        $statement->execute([
             ':idRencontre' => $entity->getIdRencontre(),
             ':idJoueur' => $entity->getJoueur()->getIdJoueur(),
             ':poste' => $entity->getPoste(),
@@ -46,10 +46,10 @@ class DaoJouer implements Dao {
 
     public function findById(int $id): ?Jouer {
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'SELECT * FROM Jouer WHERE idJouer = :id';
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([':id' => $id]);
-        $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+        $requete = 'SELECT * FROM Jouer WHERE idJouer = :id';
+        $statement = $pdo->prepare($requete);
+        $statement->execute([':id' => $id]);
+        $row = $statement->fetch(\PDO::FETCH_ASSOC);
         if ($row === false) {
             return null;
         }
@@ -58,9 +58,9 @@ class DaoJouer implements Dao {
 
     public function findAll(): array {
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'SELECT * FROM Jouer';
-        $stmt = $pdo->query($sql);
-        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $requete = 'SELECT * FROM Jouer';
+        $statement = $pdo->prepare($requete);
+        $rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
         $result = [];
         foreach ($rows as $row) {
@@ -71,10 +71,10 @@ class DaoJouer implements Dao {
 
     public function findByRencontre(int $idRencontre): array {
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'SELECT * FROM Jouer WHERE idRencontre = :idRencontre';
-        $stmt = $pdo->query($sql);
-        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
-        $stmt->execute([':idRencontre' => $idRencontre]);
+        $requete = 'SELECT * FROM Jouer WHERE idRencontre = :idRencontre';
+        $statement = $pdo->prepare($requete);
+        $statement->execute([':idRencontre' => $idRencontre]);
+        $rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
         $result = [];
         foreach ($rows as $row) {
@@ -89,9 +89,9 @@ class DaoJouer implements Dao {
         }
 
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'UPDATE Jouer SET idRencontre = :idRencontre, idJoueur = :idJoueur, poste = :poste, titulaire = :titulaire, note = :note WHERE idJouer = :idJouer';
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([
+        $requete = 'UPDATE Jouer SET idRencontre = :idRencontre, idJoueur = :idJoueur, poste = :poste, titulaire = :titulaire, note = :note WHERE idJouer = :idJouer';
+        $statement = $pdo->prepare($requete);
+        $statement->execute([
             ':idRencontre' => $entity->getIdRencontre(),
             ':idJoueur' => $entity->getJoueur()->getIdJoueur(),
             ':poste' => $entity->getPoste(),
@@ -103,8 +103,8 @@ class DaoJouer implements Dao {
 
     public function deleteById(int $id): void {
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'DELETE FROM Jouer WHERE idJouer = :id';
-        $stmt = $pdo->prepare($sql);
+        $requete = 'DELETE FROM Jouer WHERE idJouer = :id';
+        $stmt = $pdo->prepare($requete);
         $stmt->execute([':id' => $id]);
     }
 }

@@ -28,8 +28,8 @@ class DaoRencontre implements Dao {
         $dateHeure = $entity->getDateHeure()->format('Y-m-d h:m');
 
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'insert into Rencontre (dateHeure, adversaire, lieu, resultat) values (:dateHeure, :adversaire, :lieu, :resultat)';
-        $statement = $pdo->prepare($sql);
+        $requete = 'insert into Rencontre (dateHeure, adversaire, lieu, resultat) values (:dateHeure, :adversaire, :lieu, :resultat)';
+        $statement = $pdo->prepare($requete);
         $statement->execute(
             [':dateHeure' => $dateHeure, 
             ':adversaire' => $entity->getAdversaire(),
@@ -53,8 +53,8 @@ class DaoRencontre implements Dao {
 
     public function findAll(): array {
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'SELECT * FROM Rencontre';
-        $stmt = $pdo->query($sql);
+        $requete = 'SELECT * FROM Rencontre';
+        $stmt = $pdo->query($requete);
         $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
 
         $result = [];
@@ -70,8 +70,8 @@ class DaoRencontre implements Dao {
         }
 
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'update Rencontre set dateHeure = :dateHeure, adversaire = :adversaire, lieu = :lieu, resultat = :resultat where idRencontre = :idRencontre';
-        $statement = $pdo->prepare($sql);
+        $requete = 'update Rencontre set dateHeure = :dateHeure, adversaire = :adversaire, lieu = :lieu, resultat = :resultat where idRencontre = :idRencontre';
+        $statement = $pdo->prepare($requete);
         $statement->execute([
             ':dateHeure' => $entity->getDateHeure()->format('Y-m-d H:i'),
             ':adversaire' => $entity->getAdversaire(),
@@ -83,8 +83,8 @@ class DaoRencontre implements Dao {
 
     public function deleteById(int $id): void {
         $pdo = MariaDBDataSource::getConnexion();
-        $sql = 'DELETE FROM Rencontre WHERE idRencontre = :id';
-        $stmt = $pdo->prepare($sql);
+        $requete = 'DELETE FROM Rencontre WHERE idRencontre = :id';
+        $stmt = $pdo->prepare($requete);
         $stmt->execute([':id' => $id]);
     }
 }
