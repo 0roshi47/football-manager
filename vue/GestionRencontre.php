@@ -65,6 +65,10 @@
                                             <input type="hidden" value='.$row->getIdRencontre().' name="idRencontreMod">
                                             <input type="submit" value="Modifier" class="button-default">
                                         </form>
+                                        <form action="ModifierRencontreForm.php" method="post">
+                                            <input type="hidden" value='.$row->getIdRencontre().' name="idRencontreMod">
+                                            <input type="submit" value="Modifier" class="button-default">
+                                        </form>
                                     </td>');
                             } else {echo('<td>'.$row->getResultat().'</td>
                                           <td></td>');}
