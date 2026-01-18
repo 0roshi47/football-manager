@@ -7,15 +7,24 @@
     </head>
     <body>
         <?php
+
+        include_once('../modele/Composition.php');
+
         if (!session_status() == PHP_SESSION_ACTIVE) {
             header('Location: ../index.php');
             exit;
         }
+
+        $idRencontre = $_POST['idRencontre'];
+
+        // $composition
+
+        include 'navbar.php';
         ?>
-        <?php include 'navbar.php'; ?>
-        <div>
-        <a href="AjouterCompoFormulaire.php"><button class="button-default">Nouvelle composition</button></a>
-     </div>
+
         Gestion des composiition
+
+
+
     </body>
 </html>

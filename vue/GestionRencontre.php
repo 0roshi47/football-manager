@@ -61,7 +61,12 @@
                                             <input type="hidden" value='.$row->getIdRencontre().'name="idRencontre">
                                             <input type="submit" value="Supprimer" class="button-default">
                                         </form>
-                                    </td>');
+                                        <form action="GestionComposition.php" method="post">
+                                            <input type="hidden" value='.$row->getIdRencontre().'name="idRencontre">
+                                            <input type="submit" value="Composition" class="button-default">
+                                        </form>
+                                    </td>
+                                    ');
                             } else {echo('<td>'.$row->getResultat().'</td>');}
                         ?>
                     </tr>
