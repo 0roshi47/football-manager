@@ -54,6 +54,10 @@
                         <input type="hidden" value=<?= $row->getIdJoueur() ?> name="idJoueur">
                         <input type="submit" value="Supprimer" class="button-default">
                     </form>
+                    <form action="InfosJoueur.php?id=<?= $row->getIdJoueur() ?>" method="post">
+                        <input type="hidden" value=<?= $row->getIdJoueur() ?> name="idJoueur">
+                        <input type="submit" value="Consulter" class="button-default">
+                    </form>
                 </div>
             </a>
         <?php endforeach; ?>

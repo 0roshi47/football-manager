@@ -64,6 +64,10 @@
                                             <input type="hidden" value='.$row->getIdRencontre().' name="idRencontreCompo">
                                             <input type="submit" value="Composition" class="button-default">
                                         </form>
+                                        <form action="SaisieRes.php" method="post">
+                                            <input type="hidden" value='.$row->getIdRencontre().' name="idRencontreRes">
+                                            <input type="submit" value="Saisir les résultats" class="button-default">
+                                        </form>
                                     </td>');
                             } else {echo('<td>'.$row->getResultat().'</td>
                                           <td></td>');}

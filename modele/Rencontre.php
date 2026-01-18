@@ -43,7 +43,7 @@ class Rencontre {
         return $this->lieu;
     }
 
-    public function setResultat(bool $resultat) {
+    public function setResultat(String $resultat) {
         $this->resultat = $resultat;
     }
 
