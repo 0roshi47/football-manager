@@ -53,15 +53,16 @@
                         <td><?= $row->getDateHeure()->format('H:i') ?></td>
                         <td><?= $row->getAdversaire() ?></td>
                         <td><?= $row->getLieu() ?></td>
-                        <td><?= $row->getResultat() ?></td>
-                        <?php if(is_null($row->getResultat())) {
-                                echo('<td>
-                                    <form action="../controleur/SupprimerRencontre.php" method="post">
-                                        <input type="hidden" value='.$row->getIdRencontre().'name="idRencontre">
-                                        <input type="submit" value="Supprimer" class="button-default">
-                                    </form>
-                                </td>');
-                            }
+                        <?php if($row->getResultat()=="") {
+                                echo('
+                                    <td>A venir</td>
+                                    <td>
+                                        <form action="../controleur/SupprimerRencontre.php" method="post">
+                                            <input type="hidden" value='.$row->getIdRencontre().'name="idRencontre">
+                                            <input type="submit" value="Supprimer" class="button-default">
+                                        </form>
+                                    </td>');
+                            } else {echo('<td>'.$row->getResultat().'</td>');}
                         ?>
                     </tr>
                 <?php endforeach; ?>
