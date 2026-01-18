@@ -9,10 +9,10 @@
 
 <body>
     <?php
-        if (!session_status() == PHP_SESSION_ACTIVE) {
-            header('Location: ../index.php');
-            exit;
-        }
+    if (!session_status() == PHP_SESSION_ACTIVE) {
+        header('Location: ../index.php');
+        exit;
+    }
     ?>
     <?php include 'navbar.php'; ?>
     <div>
@@ -23,7 +23,7 @@
             <option value="notDesc"> Note décroissante</option>
         </select>
         <a href="AjouterJoueurFormulaire.php"><button class="button-default">Ajouter un joueur</button></a>
-     </div>
+    </div>
     <?php
     include "../modele/dao/DaoJoueur.php";
     // Affichage des erreurs (à garder en dev)
@@ -63,6 +63,10 @@
                     <option value="Suspendu">Suspendu</option>
                     <option value="Absent">Absent</option>
                 </select>
+                <form action="../controleur/SupprimerJoueur.php" method="post">
+                    <input type="hidden" value=<?= $row->getIdJoueur() ?> name="idJoueur">
+                    <input type="submit" value="Supprimer" class="button-default">
+                </form>
             </div>
         <?php endforeach; ?>
     </div>
