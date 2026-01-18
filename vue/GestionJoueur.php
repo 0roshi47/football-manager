@@ -26,7 +26,7 @@
     </div>
     <?php
     include "../modele/dao/DaoJoueur.php";
-    // Affichage des erreurs (à garder en dev)
+    // Affichage des erreurs
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
@@ -36,9 +36,9 @@
     $req = $daoJ->findAll();
     ?>
 
-    <div class="display-flex">
+    <div class="display-flex_justify-content">
         <?php foreach ($req as $row): ?>
-            <a href="InfosJoueur.php">
+            <a href="InfosJoueur.php?id=<?= $row->getIdJoueur() ?>">
                 <div id="carte-joueur">
                     <img src="./images/icon-placeholder.jpg" alt="icone de joueur">
 

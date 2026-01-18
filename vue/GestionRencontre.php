@@ -58,11 +58,16 @@
                                     <td>A venir</td>
                                     <td>
                                         <form action="../controleur/SupprimerRencontre.php" method="post">
-                                            <input type="hidden" value='.$row->getIdRencontre().'name="idRencontre">
+                                            <input type="hidden" value='.$row->getIdRencontre().' name="idRencontreSuppr">
                                             <input type="submit" value="Supprimer" class="button-default">
                                         </form>
+                                        <form action="ModifierRencontreForm.php" method="post">
+                                            <input type="hidden" value='.$row->getIdRencontre().' name="idRencontreMod">
+                                            <input type="submit" value="Modifier" class="button-default">
+                                        </form>
                                     </td>');
-                            } else {echo('<td>'.$row->getResultat().'</td>');}
+                            } else {echo('<td>'.$row->getResultat().'</td>
+                                          <td></td>');}
                         ?>
                     </tr>
                 <?php endforeach; ?>
