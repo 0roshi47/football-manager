@@ -1,5 +1,8 @@
 <?php
 
+require_once '../modele/Joueur.php';
+require_once '../modele/dao/DaoJoueur.php';
+
 if (empty($_POST['nom'])
     || empty($_POST['prenom'])
     || empty($_POST['naissance'])
@@ -17,16 +20,35 @@ $taille = $_POST['taille'];
 $poids = $_POST['poids'];
 $license = $_POST['license'];
 
-$dateNaissance = DateTime::createFromFormat('d/m/Y', $naissance);
+$dateNaissance = DateTime::createFromFormat('Y-m-d', $naissance); //format saisie standard saisi par l'utilisateur
 
-if ($dateNaissance === false) { //la date n'a pas été converti correctement
+if ($dateNaissance === false) { //la date n'a pas été converti correctement (format incorrect)
     header('Location: ../vue/AjouterJoueurFormulaire.php');
     exit;
 }
 
-$dateNaissanceOutput = $dateNaissance->format('Y-m-d');
+$dateNaissance = $dateNaissance->format('Y-m-d'); //format stockée en bd
 
-// $newJoueur = new Joueur(0, $license, $nom, $prenom, );
-header('Location:../vue/GestionJoueur.php');
+const STATUT_PAR_DEFAUT = "Actif";
+
+// new DateTimeImmutable($dateNaissance);
+
+$newJoueur = new Joueur(0, $license, $nom, $prenom, new DateTimeImmutable($dateNaissance), STATUT_PAR_DEFAUT, $poids, $taille);
+
+ini_set('display_errors', '1');
+ini_set('display_startup_errors', '1');
+error_reporting(E_ALL);
+
+$dao = new DaoJoueur();
+
+try {
+    $dao->create($newJoueur);
+} catch (Exception $e) { //erreur dans l'ajout du joueur en bd
+    header('Location: ../vue/AjouterJoueurFormulaire.php');
+    exit;
+}
+
+header('Location: ../vue/GestionJoueur.php'); //le joueur a été ajouté, l'utilisateur est redirigé sur la page gestion
+
 ?>
 
