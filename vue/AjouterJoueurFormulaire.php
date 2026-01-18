@@ -13,6 +13,7 @@
         }
     ?>
     <?php include 'navbar.php'; ?>
+    <a href="GestionJoueur.php"><button class="button-default">← Retour</button></a>
     <h1>Ajouter un joueur</h1>
     <form action="../controleur/AjouterJoueur.php" method="post">
 

@@ -36,38 +36,40 @@
     $req = $daoJ->findAll();
     ?>
 
-    <div class="display-flex_direction-row">
+    <div class="display-flex">
         <?php foreach ($req as $row): ?>
-            <div class="carte-joueur">
-                <img src="./images/icon-placeholder.jpg" alt="icone de joueur">
+            <a href="InfosJoueur.php">
+                <div id="carte-joueur">
+                    <img src="./images/icon-placeholder.jpg" alt="icone de joueur">
 
-                <ul class="infos-joueur">
-                    <li>Nom :
-                        <?= $row->getNom() ?>
-                    </li>
-                    <li>Prénom :
-                        <?= $row->getPrenom() ?>
-                    </li>
-                    <li>Naissance :
-                        <?= $row->getNaissance()->format("d/m/Y") ?>
-                    </li>
-                    <li>Licence :
-                        <?= $row->getLicence() ?>
-                    </li>
-                </ul>
+                    <ul class="list-no-style">
+                        <li>Nom :
+                            <?= $row->getNom() ?>
+                        </li>
+                        <li>Prénom :
+                            <?= $row->getPrenom() ?>
+                        </li>
+                        <li>Naissance :
+                            <?= $row->getNaissance()->format("d/m/Y") ?>
+                        </li>
+                        <li>Licence :
+                            <?= $row->getLicence() ?>
+                        </li>
+                    </ul>
 
-                <select class="border-radius-5px_width-100px" name="status">
-                    <option value="">Statut</option>
-                    <option value="Actif">Actif</option>
-                    <option value="Blesse">Blessé</option>
-                    <option value="Suspendu">Suspendu</option>
-                    <option value="Absent">Absent</option>
-                </select>
-                <form action="../controleur/SupprimerJoueur.php" method="post">
-                    <input type="hidden" value=<?= $row->getIdJoueur() ?> name="idJoueur">
-                    <input type="submit" value="Supprimer" class="button-default">
-                </form>
-            </div>
+                    <select class="border-radius-5px_width-100px" name="status">
+                        <option value="">Statut</option>
+                        <option value="Actif">Actif</option>
+                        <option value="Blesse">Blessé</option>
+                        <option value="Suspendu">Suspendu</option>
+                        <option value="Absent">Absent</option>
+                    </select>
+                    <form action="../controleur/SupprimerJoueur.php" method="post">
+                        <input type="hidden" value=<?= $row->getIdJoueur() ?> name="idJoueur">
+                        <input type="submit" value="Supprimer" class="button-default">
+                    </form>
+                </div>
+            </a>
         <?php endforeach; ?>
     </div>
 </body>

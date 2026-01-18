@@ -8,6 +8,10 @@ div {
   margin: 10px;
 }
 
+body {
+    background-color: rgb(210, 231, 250);
+}
+
 .border-radius-5px_width-100px {
   border-radius: 5px;
   width: 100px;
@@ -19,7 +23,6 @@ div {
 }
 
 .button-default:hover {
-  background-color: rgb(133, 198, 255);
   transition: all;
   transform: scale(1.1);
   transition-duration: 0.2s;
@@ -33,21 +36,38 @@ div {
   letter-spacing: 1px;
 }
 
-.carte-joueur {
+.tableau th {
+    background-color: rgb(230, 229, 229);
+}
+
+#carte-joueur {
   padding: 20px;
-  border: 2px solid rgb(128, 128, 128);
+  border: 2px solid rgb(73, 85, 92);
   display: flex;
   flex-direction: column;
   border-radius: 10px;
-  background-color: rgb(230, 229, 229);
+  background-color: rgb(147, 206, 255);
 }
 
-.display-flex_direction-row {
+#carte-joueur:hover {
+  transition: all;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
+}
+
+.display-flex {
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 100vw;
 }
 
-.infos-joueur {
+.display-flex a {
+    text-decoration: none;
+    color: black;
+}
+
+.list-no-style {
   list-style-type: none;
   padding-left: 0px;
 }
@@ -90,6 +110,7 @@ div {
   background-color: #ffffff;
   color: #1e1e1e;
 }
+/*======================*/
 
 .dead-center {
   display: flex;
@@ -97,4 +118,12 @@ div {
   align-items: center;
   text-align: center;
   min-height: 100vh;
+}
+
+#auth {
+  background-color: rgb(230, 229, 229);
+  border: 2px solid rgb(128, 128, 128);
+  width: 350px;
+  height: 200px;
+  padding: 10px;
 }

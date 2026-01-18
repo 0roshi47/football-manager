@@ -13,16 +13,12 @@
         }
     ?>
     <?php include 'navbar.php'; ?>
+    <a href="GestionComposition.php"><button class="button-default">← Retour</button></a>
     <h1>Ajouter une Composition</h1>
     <form action="../controleur/AjouterComposition.php" method="post">
 
         Désignation : <input type="text" name="designation"/>
         Adversaire : <input type="text" name="adversaire"/>
-        <select class="border-radius-5px_width-100px" name="lieu">
-            <option value=""> Lieu</option><!--valeur par défaut-->
-            <option value="Domicile">Domicile</option>
-            <option value="Exterieur">Exterieur</option>
-        </select>
 
       <input type="reset" value="Réinitialiser" />
       <input type="submit" value="Valider" />

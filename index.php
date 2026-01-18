@@ -8,11 +8,13 @@
 </head>
 <body>
     <div class="dead-center">
-        <form action="controleur/Authentification.php" method="post">
-            Identifiant : <input type="text" name="identifiant"><br />
-            Mot de passe : <input type="text" name="mot_de_passe"><br />
-            <input type="submit" value="OK">
-        </form>
+        <div id="auth">
+            <form action="controleur/Authentification.php" method="post">
+                <p>Identifiant : </p><input type="text" name="identifiant"><br />
+                <p>Mot de passe : </p><input type="text" name="mot_de_passe"><br />
+                <input type="submit" value="Se connecter">
+            </form>
+        </div>
     </div>
 </body>
 </html>

@@ -54,11 +54,15 @@
                         <td><?= $row->getAdversaire() ?></td>
                         <td><?= $row->getLieu() ?></td>
                         <td><?= $row->getResultat() ?></td>
-                        <td>
-                            <form action="../controleur/SupprimerRencontre.php" method="post">
-                                <input type="hidden" value=<?=$row->getIdRencontre()?> name="idRencontre">
-                                <input type="submit" value="Supprimer" class="button-default">
-                            </form>
+                        <?php if(is_null($row->getResultat())) {
+                                echo('<td>
+                                    <form action="../controleur/SupprimerRencontre.php" method="post">
+                                        <input type="hidden" value='.$row->getIdRencontre().'name="idRencontre">
+                                        <input type="submit" value="Supprimer" class="button-default">
+                                    </form>
+                                </td>');
+                            }
+                        ?>
                     </tr>
                 <?php endforeach; ?>
         </tbody>

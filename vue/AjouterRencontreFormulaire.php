@@ -13,6 +13,7 @@
         }
     ?>
     <?php include 'navbar.php'; ?>
+    <a href="GestionRencontre.php"><button class="button-default">← Retour</button></a>
     <h1>Ajouter une rencontre</h1>
     <form action="../controleur/AjouterRencontre.php" method="post">
 
