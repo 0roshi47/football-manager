@@ -14,13 +14,13 @@
         }
         ?>
         <?php include 'navbar.php'; ?>
-        <div> <select class="select-default" name="Tris">
+        <div> <select class="border-radius-5px_width-100px" name="Tris">
             <option value="">Tri</option>
             <option value="dateAsc">Date croissant</option>
             <option value="dateDesc">Date décroissante</option>
             <option value="lieu">Lieu</option>
             </select> 
-            <a href="AjouterRencontre.html"><button class="button-default">Ajouter une rencontre</button></a>
+            <a href="AjouterRencontreFormulaire.php"><button class="button-default">Ajouter une rencontre</button></a>
          </div>
         Gestion des rencontres
     </body>

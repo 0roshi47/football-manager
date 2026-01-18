@@ -5,23 +5,24 @@ td {
 }
 
 div {
-    margin : 10px;
+  margin: 10px;
 }
 
-.select-default {
-    border-radius: 5px;
+.border-radius-5px_width-100px {
+  border-radius: 5px;
+  width: 100px;
 }
 
 .button-default {
-    border-radius: 5px;
-    border: 1px solid black;
+  border-radius: 5px;
+  border: 1px solid black;
 }
 
 .button-default:hover {
-    background-color: rgb(133, 198, 255);
-    transition: all;
-    transform: scale(1.1);
-    transition-duration: 0.2s;
+  background-color: rgb(133, 198, 255);
+  transition: all;
+  transform: scale(1.1);
+  transition-duration: 0.2s;
 }
 
 .tableau {
@@ -30,74 +31,70 @@ div {
   font-family: sans-serif;
   font-size: 0.8rem;
   letter-spacing: 1px;
-  
 }
 
 .carte-joueur {
-    padding: 20px;
-    border: 2px solid rgb(128, 128, 128);
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    background-color: rgb(230, 229, 229);
+  padding: 20px;
+  border: 2px solid rgb(128, 128, 128);
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  background-color: rgb(230, 229, 229);
 }
 
-.container-cartes {
-    display: flex;
-    flex-direction: row;
-
+.display-flex_direction-row {
+  display: flex;
+  flex-direction: row;
 }
 
 .infos-joueur {
-    list-style-type: none;
-    padding-left: 0px;
-}
-
-.select-statut {
-    border-radius: 5px;
-    width: 100px;
+  list-style-type: none;
+  padding-left: 0px;
 }
 
 /* ===== NAVBAR ===== */
 .navbar {
-    background-color: #030360;
-    padding: 0 30px;
-    height: 60px;
-    display: flex;
-    align-items: center;
-    border-radius: 10px;
+  background-color: #030360;
+  padding: 0 30px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
 }
 
 .navbar ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-    margin: 0;
-    padding: 0;
+  list-style: none;
+  display: flex;
+  gap: 30px;
+  margin: 0;
+  padding: 0;
 }
 
 .navbar li {
-    display: inline-block;
+  display: inline-block;
 }
 
 .navbar a {
-    text-decoration: none;
-    color: #ffffff;
-    font-weight: 500;
-    font-size: 16px;
-    padding: 8px 12px;
-    border-radius: 6px;
-    transition: background-color 0.3s, color 0.3s;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 500;
+  font-size: 16px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  transition:
+    background-color 0.3s,
+    color 0.3s;
 }
 
-/* Hover */
 .navbar a:hover {
-    background-color: #ffffff;
-    color: #1e1e1e;
+  background-color: #ffffff;
+  color: #1e1e1e;
 }
 
-/* Lien actif (optionnel) */
-.navbar a.active {
-    background-color: #4caf50;
-    color: #ffffff;
+.dead-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  min-height: 100vh;
 }

@@ -16,7 +16,7 @@
     ?>
     <?php include 'navbar.php'; ?>
     <div>
-        <select class="select-default" name="Tris">
+        <select class="border-radius-5px_width-100px" name="Tris">
             <option value="">Tri</option>
             <option value="Alpha">Ordre alphabétique</option>
             <option value="noteAsc">Note croissante</option>
@@ -24,7 +24,6 @@
         </select>
         <a href="AjouterJoueurFormulaire.php"><button class="button-default">Ajouter un joueur</button></a>
      </div>
-    <div class="container-cartes"></div>
     <?php
     include "../modele/dao/DaoJoueur.php";
     // Affichage des erreurs (à garder en dev)
@@ -37,27 +36,27 @@
     $req = $dao->findAll();
     ?>
 
-    <div class="container-cartes">
+    <div class="display-flex_direction-row">
         <?php foreach ($req as $row): ?>
             <div class="carte-joueur">
                 <img src="./images/icon-placeholder.jpg" alt="icone de joueur">
 
                 <ul class="infos-joueur">
                     <li>Nom :
-                        <?= htmlspecialchars($row->getNom()) ?>
+                        <?= $row->getNom() ?>
                     </li>
                     <li>Prénom :
-                        <?= htmlspecialchars($row->getPrenom()) ?>
+                        <?= $row->getPrenom() ?>
                     </li>
                     <li>Naissance :
                         <?= $row->getNaissance()->format("d/m/Y") ?>
                     </li>
                     <li>Licence :
-                        <?= htmlspecialchars($row->getLicence()) ?>
+                        <?= $row->getLicence() ?>
                     </li>
                 </ul>
 
-                <select class="select-statut" name="status">
+                <select class="border-radius-5px_width-100px" name="status">
                     <option value="">Statut</option>
                     <option value="Actif">Actif</option>
                     <option value="Blesse">Blessé</option>

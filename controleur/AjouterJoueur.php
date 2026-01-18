@@ -27,6 +27,6 @@ if ($dateNaissance === false) { //la date n'a pas été converti correctement
 $dateNaissanceOutput = $dateNaissance->format('Y-m-d');
 
 // $newJoueur = new Joueur(0, $license, $nom, $prenom, );
-
+header('Location:../vue/GestionJoueur.php');
 ?>
 
