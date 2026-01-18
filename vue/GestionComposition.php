@@ -23,17 +23,12 @@
         $daoJouer = new DaoJouer();
         $daoJoueur = new DaoJoueur();
 
-        $idRencontre = $_POST['idRencontreCompo'];
+        $idRencontre = null;
 
-        // echo $idRencontre;
-
-        if (isset($_POST['joueur'])) { //un joueur a été rajouté
-            $idJoueur = $_POST['joueur'];
-            $joueur = $daoJoueur->findById($idJoueur);
-            if (!$daoJouer->joueurJoueMatch($idJoueur, $idRencontre)) { //verifie si le joueur est déjà dans la composition
-                $newJouer = new Jouer(0, $idRencontre, $joueur, "Poste", true, 5);
-                $daoJouer->create($newJouer);
-            }
+        if (!empty($_POST['idRencontreCompo'])) {
+            $idRencontre = $_POST['idRencontreCompo'];
+        } else {
+            $idRencontre = $_GET['idRencontreCompo'];
         }
 
         $participations = $daoJouer->findByRencontre($idRencontre);
@@ -52,21 +47,18 @@
         }
 
         // filtrer joueursDispo
-        $joueursDispo = array_values(array_filter($joueursDispo, function($joueur) use ($idsDansCompo) {
-            $id = is_object($joueur) ? $joueur->getIdJoueur() : $joueur;
+        $joueursDispo = array_values(array_filter($joueursDispo, function($j) use ($idsDansCompo) {
+            $id = is_object($j) ? $j->getIdJoueur() : $j;
             return !in_array($id, $idsDansCompo, true);
         }));
 
         // enleve les joueurs qui n'ont pas le statut actif
-        $joueursDispo = array_values(array_filter($joueursDispo, function($joueur) {
-            return is_object($joueur) && $joueur->getStatut() === 'Actif';
+        $joueursDispo = array_values(array_filter($joueursDispo, function($j) {
+            return is_object($j) && $j->getStatut() === 'Actif';
         }));
-
-
 
         include 'navbar.php';
         ?>
-        <a href="GestionRencontre.php"><button class="button-default">← Retour</button></a>
 
         <?php foreach ($joueursDansComposition as $row): ?>
             <div id="carte-joueur">
@@ -89,7 +81,7 @@
             </div>
         <?php endforeach; ?>
 
-        <form action="GestionComposition.php" method="post">
+        <form action="../controleur/AjouterJoueurComposition.php" method="post">
             Ajouter 
             <select name="joueur">
                 <?php foreach ($joueursDispo as $joueur): ?>
