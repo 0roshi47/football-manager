@@ -13,9 +13,12 @@ $mdp = $_POST['mot_de_passe'];
 
 if (LOGIN == $identifiant && PASSWORD == $mdp) {
     session_start();
+    $_SESSION['user'] = $identifiant;
     header('Location: ../vue/Accueil.php');
+    exit;
 } else {
     header('Location: ../index.php');
+    exit;
 }
 
 ?>

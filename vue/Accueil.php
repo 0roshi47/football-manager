@@ -9,13 +9,15 @@
 
 <body>
     <?php
+        session_start();
         if (!session_status() == PHP_SESSION_ACTIVE) {
             header('Location: ../index.php');
             exit;
         }
     ?>
-    <?php include 'navbar.php'; ?>
-    <h1>Bonjour $user</h1>
+    <?php include 'navbar.php';?>
+
+    <h1>Bonjour <?=$_SESSION['user']?></h1>
     <div>
         <h3>Matchs à venir</h3>
         <table class="tableau">

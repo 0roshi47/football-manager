@@ -13,6 +13,9 @@
         }
         ?>
         <?php include 'navbar.php'; ?>
+        <div>
+        <a href="AjouterCompoFormulaire.php"><button class="button-default">Nouvelle composition</button></a>
+     </div>
         Gestion des composiition
     </body>
 </html>
