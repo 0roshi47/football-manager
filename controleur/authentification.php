@@ -1,7 +1,7 @@
 <?php
 
 const LOGIN = "coach";
-const PASSWORD = "coach_mot_de_passe";
+const PASSWORD = "mdp";
 
 if (empty($_POST['identifiant']) || empty($_POST['mot_de_passe'])) {
     header('Location: ../index.php');

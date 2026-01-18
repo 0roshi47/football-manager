@@ -6,7 +6,7 @@
     <title>Document</title>
 </head>
 <body>
-    <form action="controleur/authentification.php" method="post">
+    <form action="controleur/Authentification.php" method="post">
         Identifiant : <input type="text" name="identifiant"><br />
         Mot de passe : <input type="text" name="mot_de_passe"><br />
         <input type="submit" value="OK">

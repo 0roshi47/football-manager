@@ -15,14 +15,14 @@
         }
     ?>
     <?php include 'navbar.php'; ?>
-    <div> 
+    <div>
         <select class="select-default" name="Tris">
             <option value="">Tri</option>
             <option value="Alpha">Ordre alphabétique</option>
             <option value="noteAsc">Note croissante</option>
             <option value="notDesc"> Note décroissante</option>
-        </select> 
-        <a href="AjouterJoueur.html"><button class="button-default">Ajouter un joueur</button></a>
+        </select>
+        <a href="AjouterJoueurFormulaire.php"><button class="button-default">Ajouter un joueur</button></a>
      </div>
     <div class="container-cartes"></div>
     <?php
