@@ -20,7 +20,7 @@ $taille = $_POST['taille'];
 $poids = $_POST['poids'];
 $license = $_POST['license'];
 
-$dateNaissance = DateTime::createFromFormat('d/m/Y', $naissance); //format saisie standard saisi par l'utilisateur
+$dateNaissance = DateTime::createFromFormat('Y-m-d', $naissance); //format saisie standard saisi par l'utilisateur
 
 if ($dateNaissance === false) { //la date n'a pas été converti correctement (format incorrect)
     header('Location: ../vue/AjouterJoueurFormulaire.php');
