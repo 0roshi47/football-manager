@@ -20,24 +20,30 @@ $nuls = 0;
 foreach ($matchs as $match) {
     $resultat = $match->getResultat();
 
-    if ($resultat === "") continue; // Ignorer les matchs à venir
+    if ($resultat === "" || strpos($resultat, '-') === false) continue;
 
-    // On suppose que le format est "Equipe1 - Equipe2 X-Y" ou "3-1"
-    // Ici, imaginons que "notre équipe" est l'équipe domicile
-    // Si tu as stocké un champ 'scoreEquipe' ou 'scoreAdverse', adapte
-    // Pour simplifier, on assume un champ résultat de type "3-1" pour domicile
-    list($scoreEquipe, $scoreAdverse) = explode('-', $resultat);
+    $parts = explode('-', $resultat);
+    if (count($parts) !== 2) continue;
 
-    $scoreEquipe = (int)$scoreEquipe;
-    $scoreAdverse = (int)$scoreAdverse;
+    $scoreEquipe = (int)$parts[0];
+    $scoreAdverse = (int)$parts[1];
 
     if ($scoreEquipe > $scoreAdverse) $gagnes++;
     elseif ($scoreEquipe < $scoreAdverse) $perdus++;
     else $nuls++;
 }
 
-?>
+// Calcul des pourcentages
+$total = $gagnes + $perdus + $nuls;
 
+if ($total > 0) {
+    $pctGagnes = round(($gagnes / $total) * 100, 1);
+    $pctPerdus = round(($perdus / $total) * 100, 1);
+    $pctNuls   = round(($nuls   / $total) * 100, 1);
+} else {
+    $pctGagnes = $pctPerdus = $pctNuls = 0;
+}
+?>
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -46,20 +52,26 @@ foreach ($matchs as $match) {
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+    <?php include 'navbar.php'; ?>
     <h1>Statistiques de l'équipe</h1>
 
     <div class="stats-container">
         <div class="stat-box" style="background-color: #4CAF50; color: white;">
             <h2><?= $gagnes ?></h2>
             <p>Gagnés</p>
+            <small><?= $pctGagnes ?> %</small>
         </div>
+
         <div class="stat-box" style="background-color: #F44336; color: white;">
             <h2><?= $perdus ?></h2>
             <p>Perdus</p>
+            <small><?= $pctPerdus ?> %</small>
         </div>
+
         <div class="stat-box" style="background-color: #FFC107; color: white;">
             <h2><?= $nuls ?></h2>
             <p>Nuls</p>
+            <small><?= $pctNuls ?> %</small>
         </div>
     </div>
 

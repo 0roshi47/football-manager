@@ -66,6 +66,7 @@
 
         include 'navbar.php';
         ?>
+        <a href="GestionRencontre.php"><button class="button-default">← Retour</button></a>
 
         <?php foreach ($joueursDansComposition as $row): ?>
             <div id="carte-joueur">

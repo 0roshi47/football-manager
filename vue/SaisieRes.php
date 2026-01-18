@@ -16,6 +16,7 @@
     }
     ?>
     <?php include 'navbar.php'; ?>
+    <a href="GestionRencontre.php"><button class="button-default">← Retour</button></a>
     <?php
     include "../modele/dao/DaoRencontre.php";
     // Affichage des erreurs (à garder en dev)
