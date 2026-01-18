@@ -28,7 +28,7 @@
     $req = $daoR->findAll();
     ?>
     <div>
-        <a href="AjouterRencontreFormulaire.php"><button class="button-default">Ajouter une rencontre</button></a>
+        <a href="AjouterRencontreFormulaire.php"><button class="button-default">Ajouter un match</button></a>
     </div>
     <table class="tableau">
         <thead>
