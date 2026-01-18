@@ -19,6 +19,7 @@ $naissance = $_POST['naissance'];
 $taille = $_POST['taille'];
 $poids = $_POST['poids'];
 $license = $_POST['license'];
+$statut = $_POST['statut'];
 
 $dateNaissance = DateTime::createFromFormat('Y-m-d', $naissance); //format saisie standard saisi par l'utilisateur
 
@@ -29,11 +30,7 @@ if ($dateNaissance === false) { //la date n'a pas été converti correctement (f
 
 $dateNaissance = $dateNaissance->format('Y-m-d'); //format stockée en bd
 
-const STATUT_PAR_DEFAUT = "Actif";
-
-// new DateTimeImmutable($dateNaissance);
-
-$newJoueur = new Joueur(0, $license, $nom, $prenom, new DateTimeImmutable($dateNaissance), STATUT_PAR_DEFAUT, $poids, $taille);
+$newJoueur = new Joueur(0, $license, $nom, $prenom, new DateTimeImmutable($dateNaissance), $statut, $poids, $taille);
 
 ini_set('display_errors', '1');
 ini_set('display_startup_errors', '1');

@@ -3,12 +3,8 @@ require_once 'Dao.php';
 require_once 'MariaDBDataSource.php';
 require_once '../modele/Rencontre.php';
 
-class DaoRencontre implements Dao
-{
-    /**
-     * @param array<string,mixed> $res
-     * @return Rencontre
-     */
+class DaoRencontre implements Dao {
+
     public function createInstance(array $res): Rencontre {
         $id = $res['idRencontre'];
         $dateHeure = $res['dateHeure'];
@@ -41,10 +37,6 @@ class DaoRencontre implements Dao
             ':resultat' => $entity->getResultat()]);
     }
 
-    /**
-     * @param int $id
-     * @return Rencontre|null
-     */
     public function findById(int $id): ?Rencontre {
         $pdo = MariaDBDataSource::getConnexion();
         $requete = 'SELECT * FROM Rencontre WHERE idRencontre = :id';
@@ -59,9 +51,6 @@ class DaoRencontre implements Dao
         return $this->createInstance($result);
     }
 
-    /**
-     * @return Rencontre[]
-     */
     public function findAll(): array {
         $pdo = MariaDBDataSource::getConnexion();
         $sql = 'SELECT * FROM Rencontre';

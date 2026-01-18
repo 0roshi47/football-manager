@@ -3,12 +3,8 @@ require_once 'Dao.php';
 require_once 'MariaDBDataSource.php';
 require_once '../modele/Joueur.php';
 
-class DaoJoueur implements Dao
-{
-    /**
-     * @param array<string,mixed> $res
-     * @return Joueur
-     */
+class DaoJoueur implements Dao {
+
     public function createInstance(array $res): Joueur {
         $id = $res['idJoueur'];
         $license = $res['license'];
@@ -26,7 +22,7 @@ class DaoJoueur implements Dao
 
     public function create(mixed $entity): void {
         if (! $entity instanceof Joueur) {
-            throw new \InvalidArgumentException('Joueur requis');
+            throw new \InvalidArgumentException('Type joueur requis');
         }
 
         $dateNaissance = $entity->getNaissance()->format('Y-m-d');
@@ -44,10 +40,6 @@ class DaoJoueur implements Dao
             ':taille' => $entity->getTaille()]);
     }
 
-    /**
-     * @param int $id
-     * @return Joueur|null
-     */
     public function findById(int $id): ?Joueur {
         $pdo = MariaDBDataSource::getConnexion();
         $requete = 'SELECT * FROM Joueur WHERE idJoueur = :id';
@@ -62,9 +54,6 @@ class DaoJoueur implements Dao
         return $this->createInstance($result);
     }
 
-    /**
-     * @return Joueur[]
-     */
     public function findAll(): array {
         $pdo = MariaDBDataSource::getConnexion();
         $sql = 'SELECT * FROM Joueur';
