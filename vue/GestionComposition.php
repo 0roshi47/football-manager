@@ -48,8 +48,6 @@
         include 'navbar.php';
         ?>
 
-        Gestion des composition
-
         <?php foreach ($joueursDansComposition as $row): ?>
             <div id="carte-joueur">
                 <!-- <img src="./images/icon-placeholder.jpg" alt="icone de joueur"> -->
