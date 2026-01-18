@@ -9,6 +9,8 @@ interface Dao {
      */
     public function createInstance(array $res): mixed;
 
+    public function create(mixed $entity): void;
+
     /**
      * @param int $id
      * @return T|null

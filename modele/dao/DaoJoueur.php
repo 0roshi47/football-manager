@@ -19,10 +19,31 @@ class DaoJoueur implements Dao
         $poids = $res['poids'];
         $taille = $res['taille'];
 
-        $dateNaissance = new DateTimeImmutable($naissance . "00:00:00");
+        $dateNaissance = new DateTimeImmutable($naissance);
 
         return new Joueur($id, $license, $nom, $prenom, $dateNaissance, $statut, $poids, $taille);
     }
+
+    public function create(mixed $entity): void {
+        if (! $entity instanceof Joueur) {
+            throw new \InvalidArgumentException('Joueur requis');
+        }
+
+        $dateNaissance = $entity->getNaissance()->format('Y-m-d');
+
+        $pdo = MariaDBDataSource::getConnexion();
+        $sql = 'insert into Joueur (license, nom, prenom, naissance, statut, poids, taille) values(:license, :nom, :prenom, :naissance, :statut, :poids, :taille)';
+        $statement = $pdo->prepare($sql);
+        $statement->execute(
+            [':license' => $entity->getLicence(), 
+            ':nom' => $entity->getNom(),
+            ':prenom' => $entity->getPrenom(),
+            ':naissance' => $dateNaissance,
+            ':statut' => $entity->getStatut(),
+            ':poids' => $entity->getPoids(),
+            ':taille' => $entity->getTaille()]);
+    }
+
 
     /**
      * @param int $id
@@ -48,8 +69,8 @@ class DaoJoueur implements Dao
     public function findAll(): array {
         $pdo = MariaDBDataSource::getConnexion();
         $sql = 'SELECT * FROM Joueur';
-        $stmt = $pdo->query($sql);
-        $rows = $stmt->fetchAll(\PDO::FETCH_ASSOC);
+        $statement = $pdo->query($sql);
+        $rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
 
         $result = [];
         foreach ($rows as $row) {
@@ -67,8 +88,8 @@ class DaoJoueur implements Dao
     public function deleteById(int $id): void {
         $pdo = MariaDBDataSource::getConnexion();
         $sql = 'DELETE FROM Joueur WHERE idJoueur = :id';
-        $stmt = $pdo->prepare($sql);
-        $stmt->execute([':id' => $id]);
+        $statement = $pdo->prepare($sql);
+        $statement->execute([':id' => $id]);
     }
 }
 ?>
