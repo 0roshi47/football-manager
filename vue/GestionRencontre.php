@@ -27,12 +27,7 @@
     // Récupération de tout les joueurs
     $req = $daoR->findAll();
     ?>
-    <div> <select class="border-radius-5px_width-100px" name="Tris">
-            <option value="">Tri</option>
-            <option value="dateAsc">Date croissant</option>
-            <option value="dateDesc">Date décroissante</option>
-            <option value="lieu">Lieu</option>
-        </select>
+    <div>
         <a href="AjouterRencontreFormulaire.php"><button class="button-default">Ajouter une rencontre</button></a>
     </div>
     <table class="tableau">

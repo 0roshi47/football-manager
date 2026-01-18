@@ -15,19 +15,15 @@
         header('Location: ../index.php');
         exit;
     }
-    if (!isset($_GET['id']) || !ctype_digit($_GET['id'])) {
-        header('Location: GestionJoueur.php');
-        exit;
-    }
 
     $daoJ = new DaoJoueur();
-    $joueur = $daoJ->findById($_GET['id']);
+    $joueur = $daoJ->findById($_POST['idJoueur']);
 
     if ($joueur == null) {
-        header('Location: GestionJoueur.php');
+        header('Location: InfosJoueur.php');
         exit;
     }
-    $commentaires = $joueur->getCommentaire();
+    // $commentaires = $joueur->getCommentaire();
     
     ?>
     <?php include 'navbar.php'; ?>
@@ -45,29 +41,16 @@
                         <li>Poids : <?= $joueur->getPoids() ?> kg</li>
                         <li>Taille : <?= $joueur->getTaille() ?> cm </li>
                         <li>Licence : <?= $joueur->getLicence() ?></li>
-                        <li>
-                            <form action="InfosJoueurForm.php" method="post">
-                                <input type="hidden" value=<?= $joueur->getIdJoueur() ?> name="idJoueur">
-                                <input type="submit" value="Modifier" class="button-default">
-                            </form>
-                        </li>
                     </ul>
-                    <form action="AjoutCommentaireForm.php" method="post">
-                        <input type="hidden" value=<?= $joueur->getIdJoueur() ?> name="idJoueur">
-                        <input type="submit" value="Ajouter un commentaire" class="button-default">
-                    </form>
                 </div>
             </div>
             <div>
                 <h2>Commentaire :</h2>
-                <?php if ($commentaires==[]) {
-                echo('<p>Aucun commentaire pour le moment</p>');
-                } else {
-                 foreach ($commentaires as $com) {
-                echo('<p>'.$com->getTexte().'</p>');
-                 }
-                
-                } ?>
+                <form action="../controleur/AjouterCommentaire.php" method="post">
+                    <input type="text" name="commentaire"><br>
+                    <input type="hidden" name="idJoueurMod" value=<?=$joueur->getIdJoueur()?>>
+                    <input type="submit" value="Enregistrer" class="button-default">
+                </form>
 
 
             </div>

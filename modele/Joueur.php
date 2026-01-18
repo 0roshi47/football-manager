@@ -10,7 +10,7 @@ class Joueur {
     private String $statut;
     private float $poids;
     private float $taille;
-    private array $commentaires;
+    private array $commentaires = [];
 
     public function __construct(int $id, String $license, String $nom, String $prenom, DateTimeImmutable $naissance, String $statut, int $poids, int $taille) {
         $this->idJoueur = $id;
@@ -60,7 +60,7 @@ class Joueur {
     }
 
     public function ajouterCommentaire(Commentaire $commentaire): void {
-        $this->commentaires.array_push($commentaire);
+        $this->commentaires[]=$commentaire;
     }
 
     public function supprimerCommentaire(Commentaire $commentaire): void {

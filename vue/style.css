@@ -17,6 +17,10 @@ body {
   width: 100px;
 }
 
+.flex-1 {
+    flex:1;
+}
+
 .button-default {
   border-radius: 5px;
   border: 1px solid black;
