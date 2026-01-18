@@ -17,7 +17,7 @@
     <h1>Ajouter une rencontre</h1>
     <form action="../controleur/AjouterRencontre.php" method="post">
 
-        Date et Heure : <input type="datetime-local" name="dateHeure"/>
+        Date et Heure : <input type="datetime-local" name="dateHeure" min="<?= date('Y-m-d\TH:i') ?>"/>
         Adversaire : <input type="text" name="adversaire"/>
         <select class="border-radius-5px_width-100px" name="lieu">
             <option value=""> Lieu</option><!--valeur par défaut-->

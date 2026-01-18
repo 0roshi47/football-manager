@@ -15,11 +15,21 @@ if ($_POST['lieu'] === 'Lieu') {
     exit;
 }
 
+
+
 $adversaire = $_POST['adversaire'];
 $lieu = $_POST['lieu'];
 
 $dateHeure = DateTime::createFromFormat('Y-m-d\TH:i', $_POST['dateHeure']);
-if ($dateHeure === false) { //la date n'a pas été converti correctement
+
+if ($dateHeure === false) {
+    header('Location: ../vue/AjouterRencontreFormulaire.php');
+    exit;
+}
+
+$now = new DateTime();
+
+if ($dateHeure < $now) {
     header('Location: ../vue/AjouterRencontreFormulaire.php');
     exit;
 }

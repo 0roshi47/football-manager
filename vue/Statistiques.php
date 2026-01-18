@@ -58,19 +58,19 @@ if ($total > 0) {
     <div class="stats-container">
         <div class="stat-box" style="background-color: #4CAF50; color: white;">
             <h2><?= $gagnes ?></h2>
-            <p>Gagnés</p>
+            <p>Matchs Gagnés</p>
             <small><?= $pctGagnes ?> %</small>
         </div>
 
         <div class="stat-box" style="background-color: #F44336; color: white;">
             <h2><?= $perdus ?></h2>
-            <p>Perdus</p>
+            <p>Matchs Perdus</p>
             <small><?= $pctPerdus ?> %</small>
         </div>
 
         <div class="stat-box" style="background-color: #FFC107; color: white;">
             <h2><?= $nuls ?></h2>
-            <p>Nuls</p>
+            <p>Matchs Nuls</p>
             <small><?= $pctNuls ?> %</small>
         </div>
     </div>
