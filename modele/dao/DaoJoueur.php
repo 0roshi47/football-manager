@@ -71,6 +71,20 @@ class DaoJoueur implements Dao {
         if (! $entity instanceof Joueur) {
             throw new \InvalidArgumentException('Joueur requis');
         }
+
+        $pdo = MariaDBDataSource::getConnexion();
+        $sql = 'update Joueur set license = :license, nom = :nom, prenom = :prenom, naissance = :naissance, statut = :statut, poids = :poids, taille = :taille where idJoueur = :idJoueur';
+        $statement = $pdo->prepare($sql);
+        $statement->execute([
+            ':license' => $entity->getLicence(),
+            ':nom' => $entity->getNom(),
+            ':prenom' => $entity->getPrenom(),
+            ':naissance' => $entity->getNaissance()->format('Y-m-d'),
+            ':statut' => $entity->getStatut(),
+            ':poids' => $entity->getPoids(),
+            ':taille' => $entity->getTaille(),
+            ':idJoueur' => $entity->getIdJoueur()
+            ]);
     }
 
     public function deleteById(int $id): void {

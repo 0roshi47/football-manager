@@ -68,6 +68,17 @@ class DaoRencontre implements Dao {
         if (! $entity instanceof Rencontre) {
             throw new \InvalidArgumentException('Joueur requis');
         }
+
+        $pdo = MariaDBDataSource::getConnexion();
+        $sql = 'update Rencontre set dateHeure = :dateHeure, adversaire = :adversaire, lieu = :lieu, resultat = :resultat where idRencontre = :idRencontre';
+        $statement = $pdo->prepare($sql);
+        $statement->execute([
+            ':dateHeure' => $entity->getDateHeure()->format('Y-m-d H:i'),
+            ':adversaire' => $entity->getAdversaire(),
+            ':lieu' => $entity->getLieu(),
+            ':resultat' => $entity->getResultat(),
+            ':idRencontre' => $entity->getIdRencontre(),
+            ]);
     }
 
     public function deleteById(int $id): void {
