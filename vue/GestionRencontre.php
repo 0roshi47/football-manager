@@ -65,9 +65,9 @@
                                             <input type="hidden" value='.$row->getIdRencontre().' name="idRencontreMod">
                                             <input type="submit" value="Modifier" class="button-default">
                                         </form>
-                                        <form action="ModifierRencontreForm.php" method="post">
-                                            <input type="hidden" value='.$row->getIdRencontre().' name="idRencontreMod">
-                                            <input type="submit" value="Modifier" class="button-default">
+                                        <form action="GestionComposition.php" method="post">
+                                            <input type="hidden" value='.$row->getIdRencontre().'name="idRencontreCompo">
+                                            <input type="submit" value="Composition" class="button-default">
                                         </form>
                                     </td>');
                             } else {echo('<td>'.$row->getResultat().'</td>

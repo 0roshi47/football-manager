@@ -56,9 +56,7 @@
     <div>
         <a href="GestionRencontre.php"><button class="button-default">Gérer les matchs</button></a>
         <a href="GestionJoueur.php"><button class="button-default">Gérer les joueurs</button></a>
-        <a href="GestionComposition.php"><button class="button-default">Gérer les compositions</button></a>
     </div>
-
 
 </body>
 </html>

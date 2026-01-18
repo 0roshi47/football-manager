@@ -93,5 +93,20 @@ class DaoJoueur implements Dao {
         $statement = $pdo->prepare($sql);
         $statement->execute([':id' => $id]);
     }
+
+    public function findJoueursRencontre(int $idRencontre): array { //tout les joueurs d'une rencontre
+        $pdo = MariaDBDataSource::getConnexion();
+        $sql = 'SELECT * FROM Joueur JOIN Jouer ON Jouer.idJoueur = Joueur.idJoueur WHERE Jouer.idRencontre = :idRencontre';
+        $statement = $pdo->query($sql);
+        $statement->execute([':idRencontre' => $idRencontre]);
+        $rows = $statement->fetchAll(\PDO::FETCH_ASSOC);
+
+        $result = [];
+        foreach ($rows as $row) {
+            $result[] = $this->createInstance($row);
+        }
+        return $result;
+    }
+
 }
 ?>
