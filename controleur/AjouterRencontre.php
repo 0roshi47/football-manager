@@ -1,5 +1,8 @@
 <?php
 
+require_once '../modele/Rencontre.php';
+require_once '../modele/dao/DaoRencontre.php';
+
 if (empty($_POST['dateHeure'])
     || empty($_POST['adversaire'])
     || empty($_POST['lieu'])) {
@@ -7,16 +10,31 @@ if (empty($_POST['dateHeure'])
     exit;
 }
 
-$dateHeure = $_POST['dateHeure'];
+if ($_POST['lieu'] === 'Lieu') {
+    header('Location: ../vue/AjouterRencontreFormulaire.php');
+    exit;
+}
+
 $adversaire = $_POST['adversaire'];
 $lieu = $_POST['lieu'];
 
+$dateHeure = DateTime::createFromFormat('Y-m-d\TH:i', $_POST['dateHeure']);
 if ($dateHeure === false) { //la date n'a pas été converti correctement
     header('Location: ../vue/AjouterRencontreFormulaire.php');
     exit;
 }
 
-//$newRencontre = new Rencontre(idRencontre: 0, dateHeure: $dateHeure, adversaire: $adversaire, lieu: $lieu, resultat: NULL);
+$newRencontre = new Rencontre(0, $dateHeure, $adversaire, $lieu, '');
+
+$dao = new DaoRencontre();
+
+try {
+    $dao->create($newRencontre);
+} catch (Exception $e) { //erreur dans l'ajout de la rencontre en bd
+    header('Location: ../vue/AjouterRencontreFormulaire.php');
+    exit;
+}
+
 header('Location:../vue/GestionRencontre.php');
 ?>
 

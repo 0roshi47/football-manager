@@ -44,7 +44,6 @@ class DaoJoueur implements Dao
             ':taille' => $entity->getTaille()]);
     }
 
-
     /**
      * @param int $id
      * @return Joueur|null

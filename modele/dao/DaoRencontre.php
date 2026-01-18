@@ -24,6 +24,23 @@ class DaoRencontre implements Dao
         return new Rencontre($id, $dateHeure, $adversaire, $lieu, $resultat);
     }
 
+    public function create(mixed $entity): void {
+        if (! $entity instanceof Rencontre) {
+            throw new \InvalidArgumentException('Type rencontre requis');
+        }
+
+        $dateHeure = $entity->getDateHeure()->format('Y-m-d h:m');
+
+        $pdo = MariaDBDataSource::getConnexion();
+        $sql = 'insert into Rencontre (dateHeure, adversaire, lieu, resultat) values (:dateHeure, :adversaire, :lieu, :resultat)';
+        $statement = $pdo->prepare($sql);
+        $statement->execute(
+            [':dateHeure' => $dateHeure, 
+            ':adversaire' => $entity->getAdversaire(),
+            ':lieu' => $entity->getLieu(),
+            ':resultat' => $entity->getResultat()]);
+    }
+
     /**
      * @param int $id
      * @return Rencontre|null
