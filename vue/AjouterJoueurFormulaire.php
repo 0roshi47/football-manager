@@ -21,7 +21,7 @@
         Naissance (jj/mm/aaaa): <input type="text" name="naissance"/>
         Taille : <input type="number" name="taille" min="100" max="250" value="170"/>cm
         Poids : <input type="number" name="poids" min="40" max="150" value="70"/>kilos
-        Licence : <input type="text" name="phone"/>
+        Licence : <input type="text" name="license"/>
 
       <input type="reset" value="Réinitialiser" />
       <input type="submit" value="Valider" />
