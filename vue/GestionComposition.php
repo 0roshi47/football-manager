@@ -30,8 +30,10 @@
         if (isset($_POST['joueur'])) {
             $idJoueur = $_POST['joueur'];
             $joueur = $daoJoueur->findById($idJoueur);
-            $newJouer = new Jouer(0, $idRencontre, $joueur, "Poste", true, 5);
-            $daoJouer->create($newJouer);
+            if (!$daoJouer->joueurJoueMatch($idJoueur, $idRencontre)) {
+                $newJouer = new Jouer(0, $idRencontre, $joueur, "Poste", true, 5);
+                $daoJouer->create($newJouer);
+            }
         }
 
         $participations = $daoJouer->findByRencontre($idRencontre);
@@ -43,7 +45,24 @@
             array_push($joueursDansComposition, $participationJoueur->getJoueur());
         }
 
-        var_dump($joueursDansComposition);
+        // les indices ) retirer
+        $idsDansCompo = [];
+        foreach ($joueursDansComposition as $p) {
+            $idsDansCompo[] = is_object($p) ? $p->getIdJoueur() : $p;
+        }
+
+        // filtrer joueursDispo
+        $joueursDispo = array_values(array_filter($joueursDispo, function($j) use ($idsDansCompo) {
+            $id = is_object($j) ? $j->getIdJoueur() : $j;
+            return !in_array($id, $idsDansCompo, true);
+        }));
+
+        // enleve les joueurs qui n'ont pas le statut actif
+        $joueursDispo = array_values(array_filter($joueursDispo, function($j) {
+            return is_object($j) && $j->getStatut() === 'Actif';
+        }));
+
+
 
         include 'navbar.php';
         ?>
@@ -77,7 +96,6 @@
                 <?php foreach ($joueursDispo as $joueur): ?>
                     <option value='<?= $joueur->getIdJoueur() ?>'><?= $joueur->getNom() ?></option>
                 <?php endforeach; ?>
-
             </select>
             
         <input type="hidden" value=<?=$idRencontre?> name="idRencontreCompo">

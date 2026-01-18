@@ -107,4 +107,13 @@ class DaoJouer implements Dao {
         $stmt = $pdo->prepare($requete);
         $stmt->execute([':id' => $id]);
     }
+
+    public function joueurJoueMatch(int $idJoueur, int $idRencontre): bool {
+        $pdo = MariaDBDataSource::getConnexion();
+        $requete = 'SELECT * FROM Jouer WHERE idJoueur = :idJoueur AND idRencontre = :idRencontre';
+        $statement = $pdo->prepare($requete);
+        $statement->execute([':idJoueur' => $idJoueur, ':idRencontre' => $idRencontre]);
+        $row = $statement->fetch(\PDO::FETCH_ASSOC);
+        return !$row === false;
+    }
 }
