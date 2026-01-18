@@ -4,7 +4,7 @@
 <head>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="style.css" />
-    <title>Gestion des rencontres</title>
+    <title>Details du joueur</title>
 
 </head>
 
@@ -28,7 +28,7 @@
         exit;
     }
     // $commentaires = $joueur->getCommentaire();
-
+    
     ?>
     <?php include 'navbar.php'; ?>
     <a href="GestionJoueur.php"><button class="button-default">← Retour</button></a>
@@ -38,30 +38,33 @@
             <div class="display-flex_justify-content">
                 <div>
                     <ul class="list-no-style">
-                        <li>Nom : <?=$joueur->getNom()?></li>
-                        <li>Prénom : <?=$joueur->getPrenom()?></li>
-                        <li>Date de naissance : <?=$joueur->getNaissance()->format('d/m/Y')?></li>
-                        <li>Statut : <?=$joueur->getStatut()?></li>
-                        <li>Poids : <?=$joueur->getPoids()?></li>
-                        <li>Taille : <?=$joueur->getTaille()?></li>
-                        <li>Licence : <?=$joueur->getLicence()?></li>
+                        <li>Nom : <?= $joueur->getNom() ?></li>
+                        <li>Prénom : <?= $joueur->getPrenom() ?></li>
+                        <li>Date de naissance : <?= $joueur->getNaissance()->format('d/m/Y') ?></li>
+                        <li>Statut : <?= $joueur->getStatut() ?></li>
+                        <li>Poids : <?= $joueur->getPoids() ?> kg</li>
+                        <li>Taille : <?= $joueur->getTaille() ?> cm </li>
+                        <li>Licence : <?= $joueur->getLicence() ?></li>
                     </ul>
 
                 </div>
                 <div>
-                    buttons
+                    <form action="InfosJoueurForm.php" method="post">
+                        <input type="hidden" value=<?=$joueur->getIdJoueur()?> name="idJoueur">
+                        <input type="submit" value="Modifier" class="button-default">
+                    </form>
                 </div>
             </div>
             <div>
                 <h2>Commentaire :</h2>
                 <?php //if (empty($commentaires)) {
-                   // echo('<p>Aucun commentaire pour le moment</p>');
+                // echo('<p>Aucun commentaire pour le moment</p>');
                 //} else {
-                  //  foreach ($commentaires as $com) {
-                        //echo('<p>'.$com->getTexte().'</p>');
-                  //  }
-                    
-                //}?>
+                //  foreach ($commentaires as $com) {
+                //echo('<p>'.$com->getTexte().'</p>');
+                //  }
+                
+                //} ?>
 
 
             </div>

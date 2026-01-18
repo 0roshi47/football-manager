@@ -15,7 +15,7 @@
             exit;
         }
 
-        $idRencontre = $_POST['idRencontre'];
+        $idRencontre = $_POST['idRencontreCompo'];
 
         // $composition
 

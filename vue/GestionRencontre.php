@@ -66,7 +66,7 @@
                                             <input type="submit" value="Modifier" class="button-default">
                                         </form>
                                         <form action="GestionComposition.php" method="post">
-                                            <input type="hidden" value='.$row->getIdRencontre().'name="idRencontreCompo">
+                                            <input type="hidden" value='.$row->getIdRencontre().' name="idRencontreCompo">
                                             <input type="submit" value="Composition" class="button-default">
                                         </form>
                                     </td>');
