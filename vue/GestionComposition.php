@@ -27,10 +27,10 @@
 
         // echo $idRencontre;
 
-        if (isset($_POST['joueur'])) {
+        if (isset($_POST['joueur'])) { //un joueur a été rajouté
             $idJoueur = $_POST['joueur'];
             $joueur = $daoJoueur->findById($idJoueur);
-            if (!$daoJouer->joueurJoueMatch($idJoueur, $idRencontre)) {
+            if (!$daoJouer->joueurJoueMatch($idJoueur, $idRencontre)) { //verifie si le joueur est déjà dans la composition
                 $newJouer = new Jouer(0, $idRencontre, $joueur, "Poste", true, 5);
                 $daoJouer->create($newJouer);
             }
@@ -45,21 +45,21 @@
             array_push($joueursDansComposition, $participationJoueur->getJoueur());
         }
 
-        // les indices ) retirer
+        // les indices à retirer
         $idsDansCompo = [];
         foreach ($joueursDansComposition as $p) {
             $idsDansCompo[] = is_object($p) ? $p->getIdJoueur() : $p;
         }
 
         // filtrer joueursDispo
-        $joueursDispo = array_values(array_filter($joueursDispo, function($j) use ($idsDansCompo) {
-            $id = is_object($j) ? $j->getIdJoueur() : $j;
+        $joueursDispo = array_values(array_filter($joueursDispo, function($joueur) use ($idsDansCompo) {
+            $id = is_object($joueur) ? $joueur->getIdJoueur() : $joueur;
             return !in_array($id, $idsDansCompo, true);
         }));
 
         // enleve les joueurs qui n'ont pas le statut actif
-        $joueursDispo = array_values(array_filter($joueursDispo, function($j) {
-            return is_object($j) && $j->getStatut() === 'Actif';
+        $joueursDispo = array_values(array_filter($joueursDispo, function($joueur) {
+            return is_object($joueur) && $joueur->getStatut() === 'Actif';
         }));
 
 
