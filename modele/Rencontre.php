@@ -5,9 +5,9 @@ class Rencontre {
     private DateTime $dateHeure;
     private String $adversaire;
     private String $lieu;
-    private bool $resultat;
+    private String $resultat;
 
-    public function __construct(int $idRencontre, DateTime $dateHeure, String $adversaire, String $lieu, bool $resultat) {
+    public function __construct(int $idRencontre, DateTime $dateHeure, String $adversaire, String $lieu, String $resultat) {
         $this->idRencontre = $idRencontre;
         $this->dateHeure = $dateHeure;
         $this->adversaire = $adversaire;
@@ -47,7 +47,7 @@ class Rencontre {
         $this->resultat = $resultat;
     }
 
-    public function getResultat(): bool {
+    public function getResultat(): String {
         return $this->resultat;
     }
 

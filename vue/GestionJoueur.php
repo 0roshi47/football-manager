@@ -30,10 +30,10 @@
     error_reporting(E_ALL);
     ini_set('display_errors', 1);
 
-    $dao = new DaoJoueur();
+    $daoJ = new DaoJoueur();
 
     // Récupération de tout les joueurs
-    $req = $dao->findAll();
+    $req = $daoJ->findAll();
     ?>
 
     <div class="display-flex_direction-row">

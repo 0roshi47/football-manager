@@ -16,7 +16,10 @@ class DaoRencontre implements Dao
         $lieu = $res['lieu'];
         $resultat = $res['resultat'];
 
-        $date = new DateTimeImmutable($dateHeure . "00:00:00");
+        $dateHeure = new DateTime($dateHeure);
+        if (is_null($resultat)) {
+            return new Rencontre($id, $dateHeure, $adversaire, $lieu, "A venir");
+        }
 
         return new Rencontre($id, $dateHeure, $adversaire, $lieu, $resultat);
     }
@@ -40,7 +43,7 @@ class DaoRencontre implements Dao
     }
 
     /**
-     * @return Joueur[]
+     * @return Rencontre[]
      */
     public function findAll(): array {
         $pdo = MariaDBDataSource::getConnexion();
